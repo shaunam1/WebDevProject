@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+</head>
+<body>
+<main>
+
+    <h2>User Details</h2>
+    <div>    
+        <div class="col-sm col-md-4">    
+            
+            <form>
+                <div>
+                    <label for="emailAddressID">Email address</label>
+                    <input type="email" class="form-control" id="email" name="email" value="wmitty@email.com" required>
+                </div>
+                <div>
+                    <label for="firstNameID">First Name</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" value="Walter" required>
+                </div>
+                <div>
+                    <label for="lastNameID">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" value="Mitty" required>
+                </div>
+                <div>
+                    <label for="address1ID">Address Line 1</label>
+                    <input type="text" class="form-control" id="address1" name="address1" value="Street 1" required>
+                </div>
+                <div>
+                    <label for="address2ID">Address Line 2</label>
+                    <input type="text" class="form-control" id="address2" name="address2" value="Local Town" required>
+                </div>
+                <div>
+                    <label for="address3ID">Address Line 3</label>
+                    <input type="text" class="form-control" id="address3" name="address3" value="County" required>
+                </div>
+                
+                <div>
+                    <button id="jsonBtn">Submit</button>
+                </div>
+            </form>
+                
+           
+
+        </div> 
+    </div>   
+    
+
+
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+    
+
+    <script>
+        const cartCount = sessionStorage.getItem('cartCount');
+        let cart = document.getElementById('cartCount');
+        cart.textContent = cartCount;
+        const json = localStorage.getItem('form');
+        const obj = JSON.parse(json); 
+        const submitButton = document.getElementById('jsonBtn');
+        submitButton.addEventListener('click', addDetailsToJSON);
+        const emailAddress = document.getElementById('email');
+
+        function addDetailsToJSON(){
+            var data = {
+                "email":email.value,
+                "firstName":firstName.value,
+                "lastName":lastName.value,
+                "address1":address1.value,
+                "address2":address2.value,
+                "address3":address3.value
+
+            }
+            
+            const json = JSON.stringify(data);
+            console.log(json);
+
+            localStorage.setItem('form', json);
+            window.location.href = "checkout.hbs";
+        }
+    </script>
+    
+</body>
+</html>

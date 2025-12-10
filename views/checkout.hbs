@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+ </head>
+<body>
+<main>
+
+ 
+    
+    <h2>Checkout</h2>
+        <div id="testDiv">
+            <h4>Basket</h4>
+        </div>
+      
+    <div>    
+        <div> 
+          <form  name="checkout" id="user-checkout" action="" method="get">
+            
+                <fieldset>
+                    <legend>Delivery Details</legend>
+
+                        <label for="getEmail">Email</label>
+                        <input type="email" id="getEmail" name="email" value="wmitty@email.com" required>
+                   
+                        <label for="getFirstName">First name</label>
+                        <input type="text"  id="getFirstName" name="firstName" value="Walter" required>
+                 
+                  
+                        <label for="getLastName">Last name</label> 
+                        <input type="text" c id="getLastName" name="lastName" value="Mitty" required>
+                
+                   
+                        <label for="getAddress1">Address Line 1</label> 
+                        <input type="text"  id="getAddress1" name="address1" value="Street 1" required>
+              
+                  
+                        <label for="getAddress2">Address Line 2</label> 
+                        <input type="text" id="getAddress2" name="address2"  value="Local Town"  required>
+                   
+                  
+                        <label for="getAddress3">Address Line 3</label> 
+                        <input type="text"  id="getAddress3" name="address3"  value="County"  required>
+                </fieldset>
+              
+                <fieldset>
+                    <legend>Payment Details</legend>
+
+                        <label for="getCardName">Card Name</label> 
+                        <input type="text" id="cardName" name="cardname" value="MR Walter Mitty" required>
+             
+                        <label for="getCardNumber">Card Number</label> 
+                        <input type="text" id="cardNumber" name="cardNumber" value="1234 1234 1234 1234" required>
+                   
+                        <label for="getCardCVC">CVC</label> 
+                        <input type="password" id="cardCvv" name="cardCvv" required>
+                </fieldset> 
+
+                <div id="payment" role="alert">
+                    
+                </div>
+
+                <div id="payment-success" role="alert">
+                    <p></p>
+                </div>
+                <div  id="payment-failure" role="alert">
+                <p></p>
+                </div>               
+                <div>
+                    <input type='submit' class="btn btn-primary" id="buy-now" name="buy-now" value="Buy Now">
+                </div>
+            </form>
+
+
+        </div> 
+    </div>   
+    
+
+    
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script src="custom-js/custom.js"></script> 
+<script src="custom-js/checkout.js"></script> 
+
+<script>
+    
+    const cartCount = sessionStorage.getItem('cartCount');
+    let cart = document.getElementById('cartCount');
+    cart.textContent = cartCount;
+    const json = localStorage.getItem('form');
+    const obj = JSON.parse(json); 
+    const product = sessionStorage.getItem('productInCart');
+    const obj2 = JSON.parse(product); 
+
+    const myDiv = document.getElementById('testDiv');
+
+    (function displayProducts(){
+        const productDiv = document.createElement('div');
+        const par1 = document.createElement('p');
+        let total = 0;
+
+        if(obj2.constructor === Array){
+            
+            obj2.forEach(product =>{
+            par1.innerHTML += product.name + "</br>";
+            par1.innerHTML += "€" + product.price + "</br>";
+            par1.innerHTML += "</br>"
+            total += product.price;
+            
+        })
+            
+        }
+        else{
+            
+            par1.innerHTML += obj2.name + "</br>";
+            par1.innerHTML += "€" + obj2.price+ "</br>";
+        }
+        
+        let finalTotal = total.toFixed(2);
+        par1.innerHTML += "Total: €" + finalTotal;
+        
+
+        productDiv.appendChild(par1);
+        myDiv.appendChild(productDiv);
+
+    })();
+
+    const productDiv = document.getElementById('productDetails');
+    
+    //const myDiv = document.createElement('div');
+    
+    //myDiv.style.border = "1px solid black";
+    //myDiv.style.background = "white";
+
+    //const productImage = document.createElement('img');
+    //productImage.src = "images/dogLead.jpg";
+    //productImage.style.height = "150px";
+    //productImage.style.padding = "5px";
+    //myDiv.appendChild(productImage);
+
+    //const productImage2 = document.createElement('img');
+    //productImage2.src = "images/dogBowl.jpg";
+    //productImage2.style.height = "150px";
+    //productImage2.style.padding = "5px";
+    //myDiv.appendChild(productImage2);
+
+    //productDiv.appendChild(myDiv);
+
+    const submitButton = document.getElementById('buy-now');
+    submitButton.addEventListener('click', compare);
+    const emailAddress = document.getElementById('getEmail');
+    const firstName = document.getElementById('getFirstName');
+    const lastName = document.getElementById('getLastName');
+    const address1 = document.getElementById('getAddress1');
+    const address2 = document.getElementById('getAddress2');
+    const address3 = document.getElementById('getAddress3');
+
+function compare(event){
+    event.preventDefault();
+    const paymentDiv = document.getElementById('payment');
+
+
+
+    if (emailAddress.value !== obj.email){
+        paymentDiv.innerText = "";
+        const par = document.createElement('p');
+        window.alert("The email address you have entered is incorrect");
+        //par.innerText = "The details you submitted were incorrect. Please try again."
+        paymentDiv.appendChild(par);
+    }
+    else {
+        paymentDiv.innerText = "";
+        const par = document.createElement('p')
+        //par.innerText = "Thank you for your order. You will receive an email with details";
+        paymentDiv.appendChild(par);
+    }
+
+    if (firstName.value !== obj.firstName){
+        const par = document.createElement('p');
+        window.alert("The first name you have entered is incorrect");
+        //par.innerText = "The details you submitted were incorrect. Please try again."
+        paymentDiv.appendChild(par);
+    }
+    else {
+        paymentDiv.innerText = "";
+        const par = document.createElement('p')
+        //par.innerText = "Thank you for your order. You will receive an email with details";
+        paymentDiv.appendChild(par);
+    }
+
+    if (lastName.value !== obj.lastName){
+        const par = document.createElement('p');
+        window.alert("The last name you have entered is incorrect");
+        //par.innerText = "The details you submitted were incorrect. Please try again."
+        paymentDiv.appendChild(par);
+    }
+    else {
+        paymentDiv.innerText = "";
+        const par = document.createElement('p')
+        //par.innerText = "Thank you for your order. You will receive an email with details";
+        paymentDiv.appendChild(par);
+    }
+
+    if (address1.value !== obj.address1){
+        const par = document.createElement('p');
+        window.alert("The address1 you have entered is incorrect");
+        //par.innerText = "The details you submitted were incorrect. Please try again."
+        paymentDiv.appendChild(par);
+    }
+    else {
+        paymentDiv.innerText = "";
+        const par = document.createElement('p')
+        //par.innerText = "Thank you for your order. You will receive an email with details";
+        paymentDiv.appendChild(par);
+    }
+
+    if (address2.value !== obj.address2){
+        const par = document.createElement('p');
+        window.alert("The address2 you have entered is incorrect");
+        //par.innerText = "The details you submitted were incorrect. Please try again."
+        paymentDiv.appendChild(par);
+    }
+    else {
+        paymentDiv.innerText = "";
+        const par = document.createElement('p')
+        //par.innerText = "Thank you for your order. You will receive an email with details";
+        paymentDiv.appendChild(par);
+    }
+
+    if (address3.value !== obj.address3){
+        const par = document.createElement('p');
+        window.alert("The address3 you have entered is incorrect");
+        //par.innerText = "The details you submitted were incorrect. Please try again."
+        paymentDiv.appendChild(par);
+    }
+    else {
+        paymentDiv.innerText = "";
+        const par = document.createElement('p')
+        //par.innerText = "Thank you for your order. You will receive an email with details";
+        paymentDiv.appendChild(par);
+    }
+
+    
+
+}
+        
+
+
+    
+</script>
+
+</body>
+</html>

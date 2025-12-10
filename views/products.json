@@ -1,0 +1,53 @@
+{
+    "products":
+    [
+        {
+            "id": "product1",
+            "name": "Dog Lead",
+            "description1": "Blue dog lead",
+            "description2": "One size fits all",
+            "price": 5
+        
+
+        },
+        {
+            "id": "product2",
+            "name": "Dog Food Bowl",
+            "description1": "Silver dog food bowl",
+            "description2": "Made from stainless steel",
+            "price": 4.95
+        },
+        {
+            "id": "product3",
+            "name": "Cat Scratching Post",
+            "description1": "Pretty pink cat scratching post",
+            "description2": "70cm tall",
+            "price": 15.99
+        },
+        {
+            "id": "product4",
+            "name": "Cat Toy",
+            "description1": "Wind up toy mouse",
+            "description2": "Wind it up and watch your cat get hours of fun",
+            "price": 4
+            
+        },
+        {
+            "id": "product5",
+            "name": "Cat Food Bowl",
+            "description1": "Cat food bowl in the shape of a cat's face",
+            "description2": "Suitable for cats of all ages",
+            "price": 3.95
+        },
+        {
+            "id": "product6",
+            "name": "Dog Toy",
+            "description1": "Rope dog toy",
+            "description2": "Perfect for tug of war",
+            "price": 7.50
+        }
+
+    ]
+    
+
+}

@@ -1,0 +1,107 @@
+body {
+  font-family: Georgia;
+  background-color: cornflowerblue;
+}
+
+nav ul li a {
+  color: black;
+  text-decoration: none;
+}
+nav ul li {
+  list-style-type: none;
+  display: inline;
+  padding: 15px;
+  margin: 5px;
+  border-radius: 10px;
+}
+
+.active {
+  color: black;
+  font-weight: bold;
+}
+
+.btn-outline-success {
+  border-color: cornflowerblue;
+  color: cornflowerblue;
+  /*change hover background colour and hover border colour*/
+}
+
+.btn-primary {
+  border-color: cornflowerblue;
+  background-color: white;
+  color: black;
+  /*might need to change this*/
+}
+
+.internalLink {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  margin-bottom: 200px;
+  text-align: left;
+  background-color: lightskyblue;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+#application {
+  background-color: white;
+  margin-top: 15px;
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-bottom: 15px;
+  padding-top: 1.5%;
+  padding-bottom: 1.5%;
+  padding-right: 20%;
+  padding-left: 20%;
+  border: solid darkorange;
+  min-height: 500px;
+}
+
+.required {
+  font-weight: bold;
+  color: red;
+}
+
+#aside {
+  border: 2px solid darkorange;
+  background-color: lightskyblue;
+  padding-right: 10px;
+  margin-top: 48px;
+  margin-bottom: 25px;
+  list-style-type: square;
+}
+
+.card {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+footer {
+  background-color: lightgray;
+  color: black;
+}
+
+header {
+  background-image: url(../images/headerimage.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 120px;
+  color: black;
+  text-align: left;
+  padding-top: 2px;
+}
+
+.carousel-inner {
+  height: 500px;
+  width: 500px;
+  margin: 0 auto;
+}
+
+#testDiv{
+  background-color: white;
+}
+
+/*.cards-wrapper{
+    display: flex;
+}*//*# sourceMappingURL=smcustom.css.map */
